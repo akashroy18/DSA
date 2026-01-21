@@ -84,6 +84,14 @@ public  class basic{
             int rightNode = countNode(root.right);
             return leftNode + rightNode + 1;
         }
+        public int sumOfNode(Node root){
+            if(root==null){
+                return 0;
+            }
+            int lss = sumOfNode(root.left);
+            int rss = sumOfNode(root.right);
+            return lss + rss + root.data;
+        }
 
     }
      public static void main(String[] args) {
@@ -92,6 +100,8 @@ public  class basic{
         Node root = tree.buildTree(nodes);
         int c = tree.countNode(root);
         System.out.println("total node  is "+c);
+        int s = tree.sumOfNode(root);
+        System.out.println("sum of node are "+s);
 
         
     }
