@@ -1,3 +1,4 @@
+import java.util.*;
 public  class basic{
     static class Node{
         int data;
@@ -45,16 +46,44 @@ public  class basic{
             postOrder(root.right);
             System.out.println(root.data);
         }
+        public void levelOrder(Node root){
+            if(root==null){
+                return;
+            }
+            Queue<Node> q=new LinkedList<>();
+            q.add(root);
+            q.add(null);
+            while (!q.isEmpty()) {
+                Node curNode = q.remove();
+                if(curNode==null){
+                    System.out.println();
+                    if(q.isEmpty()){
+                        break;
+                    }
+                    else{
+                        q.add(null);
+                    }
+                }
+                else{
+                    System.out.print(curNode.data+" ");
+                    if(curNode.left!=null){
+                        q.add(curNode.left);
+                    }
+                    if(curNode.right!=null){
+                        q.add(curNode.right);
+                    }
+                }
+                
+            }
+        }
+
     }
      public static void main(String[] args) {
         int[] nodes = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Binary_tree tree = new Binary_tree();
         Node root = tree.buildTree(nodes);
-        tree.preOrder(root);
-        System.out.println("now inorder traversal");
-        tree.inOrder(root);
-        System.out.println("now postOrder traversal");
-        tree.postOrder(root);
+        tree.levelOrder(root);
+        
     }
 
 }
