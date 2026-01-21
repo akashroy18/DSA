@@ -92,6 +92,16 @@ public  class basic{
             int rss = sumOfNode(root.right);
             return lss + rss + root.data;
         }
+        public int htOfTree(Node root){
+            if(root==null){
+                return 0;
+            }
+            int lh = htOfTree(root.left);
+            int rh = htOfTree(root.right);
+            int nht = Math.max(lh, rh)+1;
+            return nht;
+
+        }
 
     }
      public static void main(String[] args) {
@@ -102,6 +112,8 @@ public  class basic{
         System.out.println("total node  is "+c);
         int s = tree.sumOfNode(root);
         System.out.println("sum of node are "+s);
+        int t = tree.htOfTree(root);
+        System.out.println("ht of the tree is "+t);
 
         
     }
