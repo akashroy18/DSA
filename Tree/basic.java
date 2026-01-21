@@ -76,13 +76,23 @@ public  class basic{
                 
             }
         }
+        public int countNode(Node root){
+            if(root==null){
+                return 0;
+            }
+            int leftNode = countNode(root.left);
+            int rightNode = countNode(root.right);
+            return leftNode + rightNode + 1;
+        }
 
     }
      public static void main(String[] args) {
         int[] nodes = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Binary_tree tree = new Binary_tree();
         Node root = tree.buildTree(nodes);
-        tree.levelOrder(root);
+        int c = tree.countNode(root);
+        System.out.println("total node  is "+c);
+
         
     }
 
