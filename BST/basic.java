@@ -28,13 +28,33 @@ public class basic {
         System.out.print(root.data+" ");
         inorder(root.right);
     }
+    public static boolean Search(Node root,int key){
+        if(root==null){
+            return false;
+        }
+        if(root.data>key){
+            return Search(root.left, key);
+        }
+        else if(root.data==key){
+            return true;
+        }
+        else{
+            return Search(root.right, key);
+        }
+    }
     public static void main(String[] args) {
-        int val[] = {5,1,3,4,2,7};
+        int val[] = {8,5,3,1,4,6,10,11,14};
         Node root = null;
         for(int i=0;i<val.length;i++){
             root=insert(root, val[i]);
         }
         System.out.println("inorder traversal ");
         inorder(root);
+        if(Search(root,4)){
+            System.out.println("found");
+        }
+        else{
+            System.out.println("not found");
+        }
     }
 }
